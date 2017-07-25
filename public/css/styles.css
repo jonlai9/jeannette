@@ -15,6 +15,11 @@ html, body {
     padding: 0;
 }
 
+p {
+    font-size: 3em;
+    margin: 0;
+}
+
 
 
 /* ******************************
@@ -219,6 +224,10 @@ html, body {
     color: #AE37B2;
 }
 
+.btnAnswer:focus {
+    color: red;
+}
+
 
 
 /* ******************************
@@ -232,7 +241,7 @@ html, body {
     font-weight: 400;
     position: absolute;
     height: 50%;
-    width: 50%;
+    width: 85%;
     margin: auto;
     bottom: 0;
     left: 0;
@@ -240,9 +249,30 @@ html, body {
     right: 0;
 }
 
+#secondsLeftDiv {
+    text-align: center;
+}
+
+#secondsLeft, #secondsLeftMessage {
+    width: 50%;
+    display: inline;
+    text-align: center;
+    font-size: 3em;
+}
+
+#answer {
+    width: 70%;
+    color: red;
+}
+
 #hostWord {
-    height: 100%;
+    /*height: 100%;*/
     width: 100%;
+    font-size: 3em;
+}
+
+#question {
+    font-size: 6em;
 }
 
 #hostWord h2, #btnPlayerRestart h3 {

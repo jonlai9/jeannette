@@ -21,6 +21,7 @@ exports.initGame = function(sio, socket){
     // Player Events
     gameSocket.on('playerJoinGame', playerJoinGame);
     gameSocket.on('playerAnswer', playerAnswer);
+    gameSocket.on('updateScores', updateScores);
     gameSocket.on('playerRestart', playerRestart);
 }
 
@@ -35,7 +36,7 @@ exports.initGame = function(sio, socket){
  */
 function hostCreateNewGame() {
     // Create a unique Socket.IO Room
-    var thisGameId = ( Math.random() * 100000 ) | 0;
+    var thisGameId = 123456;
 
     // Return the Room ID (gameId) and the socket ID (mySocketId) to the browser client
     this.emit('newGameCreated', {gameId: thisGameId, mySocketId: this.id});
@@ -132,6 +133,10 @@ function playerAnswer(data) {
     io.sockets.in(data.gameId).emit('hostCheckAnswer', data);
 }
 
+function updateScores(data) {
+    io.sockets.in(data.gameId).emit('updatePlayerScores', data);
+}
+
 /**
  * The game is over, and a player has clicked a button to restart the game.
  * @param data
@@ -172,21 +177,22 @@ function getWordData(i){
     // Randomize the order of the available words.
     // The first element in the randomized array will be displayed on the host screen.
     // The second element will be hidden in a list of decoys as the correct answer
-    var words = shuffle(wordPool[i].words);
+    var question = wordPool[i].question;
 
     // Randomize the order of the decoy words and choose the first 5
-    var decoys = shuffle(wordPool[i].decoys).slice(0,5);
+    var answers = shuffle(wordPool[i].choices).slice(0,5);
 
     // Pick a random spot in the decoy list to put the correct answer
     var rnd = Math.floor(Math.random() * 5);
-    decoys.splice(rnd, 0, words[1]);
+    //answers.splice(rnd, 0, words[1]);
 
     // Package the words into a single object.
     var wordData = {
         round: i,
-        word : words[0],   // Displayed Word
-        answer : words[1], // Correct Answer
-        list : decoys      // Word list for player (decoys and answer)
+        word : question,   // Displayed Word
+        answer : wordPool[i].correct, // Correct Answer
+        list : answers,      // Word list for player (decoys and answer)
+        questionType : wordPool[i].questionType
     };
 
     return wordData;
@@ -228,52 +234,51 @@ function shuffle(array) {
  */
 var wordPool = [
     {
-        "words"  : [ "sale","seal","ales","leas" ],
-        "decoys" : [ "lead","lamp","seed","eels","lean","cels","lyse","sloe","tels","self" ]
+        "question" : "Which disease devastated livestock across the UK during 2001?",
+        "correct" : "Foot-and-mouth",
+        "choices" : [ "Hand-and-foot", "Foot-in-mouth", "Hand-to-mouth", "Foot-and-mouth" ],
+        "questionType" : "multipleChoice"
     },
-
     {
-        "words"  : [ "item","time","mite","emit" ],
-        "decoys" : [ "neat","team","omit","tame","mate","idem","mile","lime","tire","exit" ]
+        "question" : "Which of these kills its victims by constriction?",
+        "correct" : "Anaconda",
+        "choices" : [ "Andalucia", "Anaconda", "Andypandy", "Annerobinson" ],
+        "questionType" : "multipleChoice"
     },
-
     {
-        "words"  : [ "spat","past","pats","taps" ],
-        "decoys" : [ "pots","laps","step","lets","pint","atop","tapa","rapt","swap","yaps" ]
+        "question" : "Which of these might be used in underwater naval operations?",
+        "correct" : "Frogmen",
+        "choices" : [ "Frogmen", "Newtmen", "Toadmen", "Tadpolemen" ],
+        "questionType" : "multipleChoice"
     },
-
     {
-        "words"  : [ "nest","sent","nets","tens" ],
-        "decoys" : [ "tend","went","lent","teen","neat","ante","tone","newt","vent","elan" ]
+        "question" : "In the UK, VAT stands for value-added ...?",
+        "correct" : "Tax",
+        "choices" : [ "Transaction", "Total", "Tax", "Trauma" ],
+        "questionType" : "multipleChoice"
     },
-
     {
-        "words"  : [ "pale","leap","plea","peal" ],
-        "decoys" : [ "sale","pail","play","lips","slip","pile","pleb","pled","help","lope" ]
+        "question" : "What are you said to do to a habit when you break it?",
+        "correct" : "Kick it",
+        "choices" : [ "Throw it", "Punch it", "Kick it", "Eat it" ],
+        "questionType" : "multipleChoice"
     },
-
     {
-        "words"  : [ "races","cares","scare","acres" ],
-        "decoys" : [ "crass","scary","seeds","score","screw","cager","clear","recap","trace","cadre" ]
+        "question" : "Where do you proverbially wear your heart, if you show your true feelings?",
+        "correct" : "On your sleeve",
+        "choices" : [ "On your collar", "On your lapel", "On your cuff", "On your sleeve" ],
+        "questionType" : "multipleChoice"
     },
-
     {
-        "words"  : [ "bowel","elbow","below","beowl" ],
-        "decoys" : [ "bowed","bower","robed","probe","roble","bowls","blows","brawl","bylaw","ebola" ]
+        "question" : "What might an electrician lay?",
+        "correct" : "Cables",
+        "choices" : [ "Tables", "Gables", "Cables", "Stables" ],
+        "questionType" : "multipleChoice"
     },
-
     {
-        "words"  : [ "dates","stead","sated","adset" ],
-        "decoys" : [ "seats","diety","seeds","today","sited","dotes","tides","duets","deist","diets" ]
-    },
-
-    {
-        "words"  : [ "spear","parse","reaps","pares" ],
-        "decoys" : [ "ramps","tarps","strep","spore","repos","peris","strap","perms","ropes","super" ]
-    },
-
-    {
-        "words"  : [ "stone","tones","steno","onset" ],
-        "decoys" : [ "snout","tongs","stent","tense","terns","santo","stony","toons","snort","stint" ]
+        "question" : "What would a 'tattie picker' harvest?",
+        "correct" : "Potatoes",
+        "choices" : [ "Raspberries", "Corn", "Potatoes", "Apples" ],
+        "questionType" : "multipleChoice"
     }
 ]

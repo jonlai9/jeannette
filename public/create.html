@@ -28,14 +28,8 @@
                 Jeannette 2017
             </div>
 
-            <div class="info">
-                <label for="inputPlayerName">Your Name:</label>
-                <input id="inputPlayerName" type="text" />
-            </div>
-
             <div class="buttons">
-                <button id="btnJoinGame" class="btn right">JOIN</button>
-                <div id="playerWaitingMessage"></div>
+                <button id="btnCreateGame" class="btn left">CREATE</button>
                 <div style="clear:both"></div>
             </div>
 
@@ -43,18 +37,38 @@
 
     </script>
 
+    <!-- This screen appears when a user clicks "CREATE" on the Title Screen -->
+    <script id="create-game-template" type="text/template">
+        <div class="createGameWrapper">
+
+            <!--<div class="info">Open this site on your mobile device:</div>
+            <div id="gameURL" class="infoBig">Error!</div>
+
+            <div class="info">Then click <strong>JOIN</strong> and <br/> enter the following Game ID:</div>
+            <div id="spanNewGameCode" class="gameId">Error!</div>-->
+
+            <div class="buttons">
+                <button id="btnStartGame" class="btn left">START</button>
+                <div style="clear:both"></div>
+            </div>
+
+            <div id="playersWaiting"></div>
+            
+        </div>
+    </script>
+
     <!-- This is the 'Host' screen. It displays the word for each player to match -->
     <script id="host-game-template" type="text/template">
         <div id="wordArea">
+            <div id="secondsLeftDiv">
+                <div id="secondsLeftMessage"></div>
+                <div id="secondsLeft"></div>
+            </div>  
             <div id="hostWord"></div>
+            <div id="question"></div>
+            <div id="answer"></div>
         </div>
         <div id="playerScores">
-            <div id="player1Score" class="playerScore">
-                <span class="score">0</span><span class="playerName">Player 1</span>
-            </div>
-            <div id="player2Score" class="playerScore">
-                <span class="playerName">Player 2</span><span class="score">0</span>
-            </div>
         </div>
     </script>
 
@@ -73,6 +87,8 @@
     <script src="libs/fastclick.js"></script>
 
     <script src="libs/lodash.js"></script>
+
+    <script src="libs/angular.min.js"></script>
 
     <!-- If Socket.IO is used with Express, then the /socket.io/ path will
         serve the proper Socket.IO javascript files used by the browser -->
