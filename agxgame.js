@@ -174,6 +174,13 @@ function sendWord(wordPoolIndex, gameId) {
  * @returns {{round: *, word: *, answer: *, list: Array}}
  */
 function getWordData(i){
+    if (wordPool[i].newMode) {
+        var wordData = {
+            newMode : wordPool[i].newMode
+        };
+
+        return wordData;
+    }
     // Randomize the order of the available words.
     // The first element in the randomized array will be displayed on the host screen.
     // The second element will be hidden in a list of decoys as the correct answer
@@ -234,51 +241,63 @@ function shuffle(array) {
  */
 var wordPool = [
     {
-        "question" : "Which disease devastated livestock across the UK during 2001?",
-        "correct" : "Foot-and-mouth",
-        "choices" : [ "Hand-and-foot", "Foot-in-mouth", "Hand-to-mouth", "Foot-and-mouth" ],
+        "newMode" : "simpleAnswer"
+    },
+    {
+        "question" : "How long have Jon and Annette known each other for?",
+        "correct" : "12 Years",
+        "choices" : [ "3 Years", "15 Months", "12 Years", "8 Years" ],
+        "questionType" : "simpleAnswer"
+    },
+    {
+        "question" : "Who bought the book titled \"The Introvert and Extrovert in Love\"?",
+        "correct" : "Jon",
+        "choices" : [ "Jon", "Annette", "Gift from Jon's Friend", "Gift from Annette's Friend" ],
+        "questionType" : "simpleAnswer"
+    },
+    {
+        "question" : "Who is the introvert?",
+        "correct" : "Annette",
+        "choices" : [ "Jon", "Annette", "Both", "Neither" ],
+        "questionType" : "simpleAnswer"
+    },
+    {
+        "question" : "Which of the following is not normally covered by ODB?",
+        "correct" : "Doxycycline",
+        "choices" : [ "Hydrocortisone 1% cream", "Amlodipine", "Doxycycline", "Mirvala 28" ],
+        "questionType" : "simpleAnswer"
+    },
+    {
+        "newMode" : "multipleChoice"
+    },
+    {
+        "question" : "Who is always right?",
+        "choices" : [ "Jon", "Annette", "Logic", "They talk it out" ],
         "questionType" : "multipleChoice"
     },
     {
-        "question" : "Which of these kills its victims by constriction?",
-        "correct" : "Anaconda",
-        "choices" : [ "Andalucia", "Anaconda", "Andypandy", "Annerobinson" ],
+        "question" : "Who enjoys shopping?",
+        "choices" : [ "Jon", "Annette", "Both", "Neither" ],
         "questionType" : "multipleChoice"
     },
     {
-        "question" : "Which of these might be used in underwater naval operations?",
-        "correct" : "Frogmen",
-        "choices" : [ "Frogmen", "Newtmen", "Toadmen", "Tadpolemen" ],
+        "question" : "What is a good place for Annette & Jon to go for their honeymoon?",
+        "choices" : [ "Scandinavia", "Australia", "Japan", "Antarctica" ],
         "questionType" : "multipleChoice"
     },
     {
-        "question" : "In the UK, VAT stands for value-added ...?",
-        "correct" : "Tax",
-        "choices" : [ "Transaction", "Total", "Tax", "Trauma" ],
-        "questionType" : "multipleChoice"
+        "newMode" : "ordering"
     },
     {
-        "question" : "What are you said to do to a habit when you break it?",
-        "correct" : "Kick it",
-        "choices" : [ "Throw it", "Punch it", "Kick it", "Eat it" ],
-        "questionType" : "multipleChoice"
+        "question" : "Rank the emojis in the order most to least frequently used by Annette to Jon",
+        "correct" : "Stare,Angry,Kiss,Mad",
+        "choices" : [ "Angry", "Mad", "Stare", "Kiss" ],
+        "questionType" : "ordering"
     },
     {
-        "question" : "Where do you proverbially wear your heart, if you show your true feelings?",
-        "correct" : "On your sleeve",
-        "choices" : [ "On your collar", "On your lapel", "On your cuff", "On your sleeve" ],
-        "questionType" : "multipleChoice"
-    },
-    {
-        "question" : "What might an electrician lay?",
-        "correct" : "Cables",
-        "choices" : [ "Tables", "Gables", "Cables", "Stables" ],
-        "questionType" : "multipleChoice"
-    },
-    {
-        "question" : "What would a 'tattie picker' harvest?",
-        "correct" : "Potatoes",
-        "choices" : [ "Raspberries", "Corn", "Potatoes", "Apples" ],
-        "questionType" : "multipleChoice"
+        "question" : "What's the correct order?",
+        "correct" : "1,2,3,4",
+        "choices" : [ "3", "2", "1", "4" ],
+        "questionType" : "ordering"
     }
 ]

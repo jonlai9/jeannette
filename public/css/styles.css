@@ -8,7 +8,8 @@ Dark Purple : #A22FB0
 */
 
 html, body {
-    background-color: #78BD4C;
+    background: url('../resources/background.jpg');
+    background-size: cover;
     height: 100%;
     width: 100%;
     margin: 0;
@@ -16,7 +17,7 @@ html, body {
 }
 
 p {
-    font-size: 3em;
+    font-size: 3vw;
     margin: 0;
 }
 
@@ -30,15 +31,13 @@ p {
 .btn {
     display: inline-block;
     height: 100%;
-    width: 49%;
     margin-bottom: 0;
     color: #ECFFE0;
     font-family: 'Quicksand', sans-serif;
     font-weight: 700;
-    font-size: 2em;
+    font-size: 8vw;
     line-height: 1.2;
     text-align: center;
-    background-color: #8AD453;
     white-space: nowrap;
     vertical-align: middle;
     cursor: pointer;
@@ -48,6 +47,12 @@ p {
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
+    background: none;
+}
+
+#btnJoinGame {
+    padding: 5% 20%;
+    background-color: #8ad453;
 }
 
 .btn:focus {
@@ -58,7 +63,6 @@ p {
 
 .btn:hover,
 .btn:focus {
-    color: #AE37B2;
     text-decoration: none;
 }
 
@@ -82,22 +86,29 @@ p {
      (intro-screen-template)
    ****************************** */
 
+@font-face {
+    font-family: "October Twlight";
+    src: url('../resources/october_twlight.ttf') format("truetype");
+}
+
 #gameArea {
     height: 100%;
     width: 100%;
+    color: white;
 }
 
 .titleWrapper {
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Century Gothic Bold', sans-serif;
     font-weight: 400;
     position: absolute;
-    height: 50%;
+    height: 70%;
     width: 96%;
     margin: auto;
     bottom: 0;
     left: 0;
     top: 0;
     right: 0;
+    text-align: center;
 }
 
 .title {
@@ -109,15 +120,72 @@ p {
     font-weight: 300;
 }
 
+.welcome {
+    color: white;
+    font-size: 5vw;
+}
+
+.annetteJon {
+    color: #e3a83b;
+    font-size: 8vw;
+    font-family: 'October Twlight', sans-serif;
+}
+
+.timelessPlay .timeless {
+    color: white;
+    font-size: 10vw;
+}
+
+.mobile .timeless, .mobile .play{
+    font-size: 15vw !important;
+}
+
+.timelessPlay .play {
+    color: #7c8ddf;
+    font-size: 10vw;
+}
+
 .buttons {
-    width: 100%;
     text-align: center;
+    padding: 5%;
 }
 
 /* ******************************
           START SCREEN
      (create-game-template)
    ****************************** */
+
+.instructions {
+    text-align: left;
+    font-size: 3vw;
+    width: 50%;
+    padding-left: 30%;
+    color: white;
+    font-weight: 600;
+    font-family: 'Century Gothic Bold', sans-serif;
+}
+
+.instructions .steps {
+    list-style: none;
+}
+
+.table {
+    padding: 0 5% 0 5%;
+    font-size: 1.2vw;
+}
+
+.table .title {
+    width: 10%;
+    text-align: right;
+    display: inline-block;
+    padding-right: 20px;
+}
+
+.table .list {
+    width: 90%;
+    color: white;
+    font-family: 'Century Gothic Bold', sans-serif;
+}
 
 .createGameWrapper, .joinGameWrapper, .gameOver {
     font-family: 'Quicksand', sans-serif;
@@ -137,15 +205,29 @@ p {
     font-weight: 300;
 }
 
+.info {
+    padding-top: 5%;
+}
+
+.info > div {
+    padding: 5% 0 5% 0;
+}
+
 .info label {
     display: block;
+    font-size: 8vw;
+    color: white;
+    text-align: center;
+    font-family: 'Century Gothic Bold', sans-serif;
+    padding-right: 20px;
+    font-weight: 600;
 }
 
 .info input {
     text-align: center;
     padding: 10px;
     width: 200px;
-    height: 60px;
+    height: 40px;
     font-family: 'Quicksand', sans-serif;
     color: #A22FB0;
     font-weight: 300;
@@ -155,7 +237,7 @@ p {
     background: transparent;
 }
 
-.info input#inputPlayerName {
+.info input {
     width: 90%;
 }
 
@@ -185,7 +267,9 @@ p {
 }
 
 #playerWaitingMessage {
-    font-size: .8em;
+    font-size: 6vw;
+    color: white;
+    padding: 5%;
 }
 
 .createGameWrapper #gameURL {
@@ -213,15 +297,16 @@ p {
 
 #ulAnswers li {
     width: 100%;
-    height: 16.6%;
+    height: 20%;
 }
 
 .btnAnswer {
     width: 100%;
     border-bottom: 1px dotted white;
     font-weight: 400;
-    font-size: 3em;
-    color: #AE37B2;
+    font-size: 10vw;
+    color: white;
+    white-space: normal;
 }
 
 .btnAnswer:focus {
@@ -237,16 +322,17 @@ p {
 
 /* Absolute Centering: http://coding.smashingmagazine.com/2013/08/09/absolute-horizontal-vertical-centering-css/ */
 #wordArea {
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Century Gothic Bold', sans-serif;
     font-weight: 400;
     position: absolute;
-    height: 50%;
+    height: 70%;
     width: 85%;
     margin: auto;
     bottom: 0;
     left: 0;
     top: 0;
     right: 0;
+    color: white;
 }
 
 #secondsLeftDiv {
@@ -254,15 +340,16 @@ p {
 }
 
 #secondsLeft, #secondsLeftMessage {
-    width: 50%;
+    width: 70%;
     display: inline;
     text-align: center;
-    font-size: 3em;
+    font-size: 4em;
 }
 
 #answer {
     width: 70%;
     color: red;
+    font-size: 5vw !important;
 }
 
 #hostWord {
@@ -272,7 +359,7 @@ p {
 }
 
 #question {
-    font-size: 6em;
+    font-size: 7em;
 }
 
 #hostWord h2, #btnPlayerRestart h3 {
