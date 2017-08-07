@@ -101,7 +101,7 @@ p {
     font-family: 'Century Gothic Bold', sans-serif;
     font-weight: 400;
     position: absolute;
-    height: 70%;
+    height: 80%;
     width: 96%;
     margin: auto;
     bottom: 0;
@@ -205,12 +205,12 @@ p {
     font-weight: 300;
 }
 
-.info {
+/*.info {
     padding-top: 5%;
-}
+}*/
 
 .info > div {
-    padding: 5% 0 5% 0;
+    padding: 5% 0 0 0;
 }
 
 .info label {
@@ -225,13 +225,13 @@ p {
 
 .info input {
     text-align: center;
-    padding: 10px;
+    padding: 5%;
     width: 200px;
     height: 40px;
     font-family: 'Quicksand', sans-serif;
-    color: #A22FB0;
+    color: white;
     font-weight: 300;
-    font-size: 54px;
+    font-size: 10vw;
     border: 1px dotted white;
     border-radius: 10px;
     background: transparent;
@@ -267,9 +267,9 @@ p {
 }
 
 #playerWaitingMessage {
-    font-size: 6vw;
+    font-size: 4vw;
     color: white;
-    padding: 5%;
+    padding-top: 5%;
 }
 
 .createGameWrapper #gameURL {
@@ -309,8 +309,8 @@ p {
     white-space: normal;
 }
 
-.btnAnswer:focus {
-    color: red;
+.btnAnswer:focus, .btnAnswer:active, .btnAnswer:hover {
+    color: red!important;
 }
 
 

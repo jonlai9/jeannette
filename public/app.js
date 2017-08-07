@@ -591,10 +591,10 @@ jQuery(function($){
             onJoinClick: function() {
                 // console.log('Player clicked "Start"');
 
-                if (!$('#inputPlayerName').val()) {
+                if (!$('#inputPlayerName').val() || !$('#inputPlayerTable').val()) {
                     $('#playerWaitingMessage')
                         .html('<p/>')
-                        .text('Please enter your name and table number to continue');
+                        .text('Please enter name and table# to continue.');
                 } else {
                     // collect data to send to the server
                     var data = {
@@ -680,7 +680,7 @@ jQuery(function($){
 
                     $('#playerWaitingMessage')
                         .html('<p/>')
-                        .text('Joined successfully! Please wait for game to begin.');
+                        .text('Joined success! Please wait for game to begin.');
                 }
             },
 
