@@ -289,7 +289,7 @@ var wordPool = [
         "newMode" : "ordering"
     },
     {
-        "question" : "Rank the emojis in the order most to least frequently used by Annette to Jon",
+        "question" : "Rank the emojis in order most to least used by Annette to Jon",
         "correct" : "Stare,Angry,Kiss,Mad",
         "choices" : [ "Angry", "Mad", "Stare", "Kiss" ],
         "questionType" : "ordering"

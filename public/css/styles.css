@@ -309,11 +309,45 @@ p {
     white-space: normal;
 }
 
-.btnAnswer:focus, .btnAnswer:active, .btnAnswer:hover {
-    color: red!important;
+.btnAnswer:focus, .btnAnswer:active {
+    color: yellow!important;
 }
 
+.btnAnswer[value="Annette"] {
+    background-image: url("../resources/annette.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 
+.btnAnswer[value="Jon"] {
+    background-image: url("../resources/jon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.btnAnswer[value="Mad"] {
+    background-image: url("../resources/mad.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.btnAnswer[value="Angry"] {
+    background-image: url("../resources/angry.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.btnAnswer[value="Kiss"] {
+    background-image: url("../resources/kiss.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.btnAnswer[value="Stare"] {
+    background-image: url("../resources/stare.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 
 /* ******************************
             HOST SCREEN
@@ -325,7 +359,7 @@ p {
     font-family: 'Century Gothic Bold', sans-serif;
     font-weight: 400;
     position: absolute;
-    height: 70%;
+    height: 90%;
     width: 85%;
     margin: auto;
     bottom: 0;
@@ -348,7 +382,7 @@ p {
 
 #answer {
     width: 70%;
-    color: red;
+    color: yellow;
     font-size: 5vw !important;
 }
 
@@ -359,7 +393,7 @@ p {
 }
 
 #question {
-    font-size: 7em;
+    font-size: 6em;
 }
 
 #hostWord h2, #btnPlayerRestart h3 {
@@ -373,7 +407,6 @@ p {
 }
 
 #playerScores {
-    height: 10%;
     width: 100%;
     position: fixed;
     top: 0;

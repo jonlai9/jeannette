@@ -156,9 +156,9 @@ jQuery(function($){
         },
 
         updatePlayerScores : function(data) {
-            if(App.myRole === 'Player') {
+            if(App.myRole === 'Player' && data != null) {
                 var player = _.find(data, { mySocketId : App.Player.playerId });
-                App.Player.updateScore(player);
+                App.Player.updateScore(data);
             }
         },
 
