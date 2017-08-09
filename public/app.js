@@ -156,9 +156,9 @@ jQuery(function($){
         },
 
         updatePlayerScores : function(data) {
-            if(App.myRole === 'Player' && data != null) {
+            if(App.myRole === 'Player' && data != null && data.length != 0) {
                 var player = _.find(data, { mySocketId : App.Player.playerId });
-                App.Player.updateScore(data);
+                App.Player.updateScore(player.score);
             }
         },
 
@@ -235,6 +235,7 @@ jQuery(function($){
             App.$templateNewGame = $('#create-game-template').html();
             App.$templateJoinGame = $('#join-game-template').html();
             App.$hostGame = $('#host-game-template').html();
+            App.$endGame = $('#end-game-template').html();
         },
 
         /**
@@ -531,24 +532,57 @@ jQuery(function($){
              * @param data
              */
             endGame : function(data) {
-                var playersOrderedByScore = _.sortBy(App.Host.players, [function(player) {
-                    return player.score || 0;
-                }]);
-
-                // Find the winner based on the scores
-                var winner = _.maxBy(playersOrderedByScore, function(player) {
-                    return player.score || 0;
+                //put each player into respective arrays
+                var scoresByTable = [];
+                _.forEach(App.Host.players, function(player) {
+                    if (!scoresByTable[player.tableNumber]) {
+                        scoresByTable[player.tableNumber] = new Array();
+                    }
+                    scoresByTable[player.tableNumber].push(player);
                 });
 
+                var topScoreByTable = [];
+                _.forEach(scoresByTable, function(table, tableNumber) {
+                    var winner = _.maxBy(table, function(player) {
+                        return player.score || 0;
+                    });
+                    if (winner && tableNumber) {
+                        topScoreByTable[tableNumber] = winner;
+                    }                    
+                });
+
+                var grandWinner = _.maxBy(topScoreByTable, function(player) {
+                    return (player && player.score) || 0;
+                });
+
+                // var playersOrderedByScore = _.sortBy(App.Host.players, [function(player) {
+                //     return player.score || 0;
+                // }]);
+
+                // // Find the winner based on the scores
+                // var winner = _.maxBy(playersOrderedByScore, function(player) {
+                //     return player.score || 0;
+                // });
+
+                App.$gameArea.html(App.$endGame);
+
+                 _.forEach(topScoreByTable, function(table, tableNumber) {
+                    if (table) {
+                        $('#' + tableNumber + ' .list').text(table.playerName + ' (Score: ' + (table.score || 0) + ')');
+                    }
+                 });
+
+                 $('#winnerName').text(grandWinner.playerName + ' from table ' + grandWinner.tableNumber + ' (Score: ' + grandWinner.score + ')');
+
                 // Clear other divs
-                $('#answer').text("");
-                $('#question').text("");
-                $('#secondsLeft').text("");
-                $('#secondsLeftMessage').text("");
+                // $('#answer').text("");
+                // $('#question').text("");
+                // $('#secondsLeft').text("");
+                // $('#secondsLeftMessage').text("");
 
                 // Display the winner (or tie game message)
-                $('#hostWord').text( winner.playerName + ' Wins!!' );
-                App.doTextFit('#hostWord');
+                // $('#hostWord').text( winner.playerName + ' Wins!!' );
+                // App.doTextFit('#hostWord');
 
                 // Reset game data
                 App.Host.numPlayersInRoom = 0;
@@ -733,7 +767,7 @@ jQuery(function($){
             },
 
             updateScore : function(data) {
-                App.Player.score = data.score;
+                App.Player.score = data;
             },
 
             /**

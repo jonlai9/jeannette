@@ -172,6 +172,7 @@ p {
 .table {
     padding: 0 5% 0 5%;
     font-size: 1.2vw;
+    text-align: left;
 }
 
 .table .title {
@@ -241,6 +242,10 @@ p {
     width: 90%;
 }
 
+#winner {
+    font-size: 10vw;
+    color: yellow;
+}
 
 /* ******************************
            JOIN SCREEN
