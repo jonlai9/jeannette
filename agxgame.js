@@ -244,21 +244,27 @@ var wordPool = [
         "newMode" : "simpleAnswer"
     },
     {
-        "question" : "How long have Jon and Annette known each other for?",
+        "question" : "How long has Jon and Annette known each other for?",
         "correct" : "12 Years",
         "choices" : [ "3 Years", "15 Months", "12 Years", "8 Years" ],
         "questionType" : "simpleAnswer"
     },
     {
-        "question" : "Who bought the book titled \"The Introvert and Extrovert in Love\"?",
-        "correct" : "Jon",
-        "choices" : [ "Jon", "Annette", "Gift from Jon's Friend", "Gift from Annette's Friend" ],
+        "question" : "Where did Jon ask Annette out?",
+        "correct" : "In front of Canadian Tire",
+        "choices" : [ "While canoeing Lake Ontario", "At Ripley's Aquarium", "In front of Canadian Tire", "In front of Niagara Falls" ],
         "questionType" : "simpleAnswer"
     },
     {
         "question" : "Who is the introvert?",
         "correct" : "Annette",
         "choices" : [ "Jon", "Annette", "Both", "Neither" ],
+        "questionType" : "simpleAnswer"
+    },
+    {
+        "question" : "What kind of roses did Jon get Annette for their 2nd Valentine's Day?",
+        "correct" : "Felt",
+        "choices" : [ "Felt", "Paper", "Ribbon", "Yarn" ],
         "questionType" : "simpleAnswer"
     },
     {
@@ -272,12 +278,22 @@ var wordPool = [
     },
     {
         "question" : "Who is always right?",
-        "choices" : [ "Jon", "Annette", "Logic", "They talk it out" ],
+        "choices" : [ "Jon", "Annette", "Neither - they never disagree", "They talk it out" ],
         "questionType" : "multipleChoice"
     },
     {
         "question" : "Who enjoys shopping?",
         "choices" : [ "Jon", "Annette", "Both", "Neither" ],
+        "questionType" : "multipleChoice"
+    },
+    {
+        "question" : "What is Annette & Jon's favourite past time?",
+        "choices" : [ "Going for Brunch", "Decorating the Home", "Going for Hikes", "Playing board games" ],
+        "questionType" : "multipleChoice"
+    },
+    {
+        "question" : "Which class in Gr10 did Annette ask Jon for help in?",
+        "choices" : [ "Science", "Comp Sci", "English", "Accounting" ],
         "questionType" : "multipleChoice"
     },
     {
@@ -295,9 +311,9 @@ var wordPool = [
         "questionType" : "ordering"
     },
     {
-        "question" : "What's the correct order?",
-        "correct" : "1,2,3,4",
-        "choices" : [ "3", "2", "1", "4" ],
+        "question" : "What's the order that Annette & Jon visited the following places?",
+        "correct" : "San Francisco,Iceland,Paris,Halifax",
+        "choices" : [ "San Francisco", "Iceland", "Paris", "Halifax" ],
         "questionType" : "ordering"
     }
 ]

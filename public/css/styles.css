@@ -242,6 +242,12 @@ p {
     width: 90%;
 }
 
+.info select {
+    width: 90%;
+    font-size: 3em;
+    text-align: center;
+}
+
 #winner {
     font-size: 10vw;
     color: yellow;

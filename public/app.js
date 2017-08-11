@@ -86,11 +86,11 @@ jQuery(function($){
                 //Switch to new mode
                 var text;
                 if (data.newMode == "simpleAnswer") {
-                    text = "Part 1: Pick the correct option";
+                    text = "Part 1: Pick the correct answer!";
                 } else if (data.newMode == "multipleChoice") {
-                    text = "Part 2: ";
+                    text = "Part 2: Cast your vote! Majority wins!";
                 } else if (data.newMode == "ordering") {
-                    text = "Part 3: ";
+                    text = "Part 3: Select all 4 options in the correct order!";
                 }
                 $('#question').text(text);
 
@@ -102,6 +102,10 @@ jQuery(function($){
             } else {
                 var timePerRound = 10; //time per question
                 var timeToShowAnswer = 5;
+
+                if (App.Host.currentQuestionType === "ordering") {
+                    timePerRound = 20;
+                }
 
                 // Update the current round
                 App.currentRound = data.round;
@@ -546,7 +550,7 @@ jQuery(function($){
                     var winner = _.maxBy(table, function(player) {
                         return player.score || 0;
                     });
-                    if (winner && tableNumber) {
+                    if (winner && (tableNumber || tableNumber === 0)) {
                         topScoreByTable[tableNumber] = winner;
                     }                    
                 });
@@ -631,10 +635,13 @@ jQuery(function($){
                         .text('Please enter name and table# to continue.');
                 } else {
                     // collect data to send to the server
+                    var select = document.getElementById("inputPlayerTable");
+                    var tableNumber = select.options[select.selectedIndex].value;
+
                     var data = {
                         gameId : 123456,
                         playerName : $('#inputPlayerName').val() || 'anon',
-                        tableNumber : $('#inputPlayerTable').val()
+                        tableNumber : tableNumber
                     };
 
                     // Send the gameId and playerName to the server
