@@ -100,12 +100,8 @@ jQuery(function($){
                 }
                 
             } else {
-                var timePerRound = 10; //time per question
-                var timeToShowAnswer = 5;
-
-                if (App.Host.currentQuestionType === "ordering") {
-                    timePerRound = 20;
-                }
+                var timePerRound = 30; //time per question
+                var timeToShowAnswer = 10;
 
                 // Update the current round
                 App.currentRound = data.round;
