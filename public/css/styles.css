@@ -320,10 +320,6 @@ p {
     white-space: normal;
 }
 
-.btnAnswer:focus, .btnAnswer:active {
-    color: yellow!important;
-}
-
 .btnAnswer[value="Annette"] {
     background-image: url("../resources/annette.png");
     background-size: contain;

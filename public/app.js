@@ -655,9 +655,15 @@ jQuery(function($){
              *  Click handler for the Player hitting a word in the word list.
              */
             onPlayerAnswerClick: function() {
+                $('#ulAnswers .btn0').css({"color": ""});
+                $('#ulAnswers .btn1').css({"color": ""});
+                $('#ulAnswers .btn2').css({"color": ""});
+                $('#ulAnswers .btn3').css({"color": ""});
                 // console.log('Clicked Answer Button');
                 var $btn = $(this);      // the tapped button
                 var answer = $btn.val(); // The tapped word
+
+                $btn.css({"color": "yellow"});
 
                 if (App.Host.currentQuestionType === "ordering") {
                     if (answer === 'reset') {
@@ -746,8 +752,8 @@ jQuery(function($){
                         .append( $('<li/>')              //  <ul> <li> </li> </ul>
                             .append( $('<button/>')      //  <ul> <li> <button> </button> </li> </ul>
                                 .addClass('btnAnswer')   //  <ul> <li> <button class='btnAnswer'> </button> </li> </ul>
-                                .addClass('btn')         //  <ul> <li> <button class='btnAnswer'> </button> </li> </ul>
-                                .addClass('btn' + index)
+                                .addClass('btn')         //  <ul> <li> <button class='btnAnswer btn'> </button> </li> </ul>
+                                .addClass('btn' + index) //  <ul> <li> <button class='btnAnswer btn btnX'> </button> </li> </ul>
                                 .val(this)               //  <ul> <li> <button class='btnAnswer' value='word'> </button> </li> </ul>
                                 .html(this)              //  <ul> <li> <button class='btnAnswer' value='word'>word</button> </li> </ul>
                             )
@@ -761,7 +767,7 @@ jQuery(function($){
                 }
 
                 // Insert the list onto the screen.
-                $('#gameArea').html($list);
+                $('#gameArea').html($list).style('ontouchstart','');
             },
 
             timesUp : function() {
